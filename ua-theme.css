@@ -1,0 +1,90 @@
+
+/* NovaWeb Ukraine — vibrant visual refresh. Main site only; concept demos retain their original styles. */
+:root{--ink:#17133e;--muted:#746d90;--border:#e9e2ff;--cream:#f8f6ff;--lime:#faff70;--green:#5d35d5;--dark:#281078}
+html{scroll-padding-top:90px}
+body.ua-site{font-family:"Manrope","DM Sans",Arial,sans-serif;color:#1c1742;background:#ffffff}
+.ua-site .site-header{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-bottom:1px solid #eee8ff}
+.ua-site .brand{font-family:Manrope,Arial,sans-serif;letter-spacing:-1.4px;font-weight:800}
+.ua-site .brand-highlight{color:#7852fa}
+.ua-site .brand-dot{color:#ff6d96}
+.ua-site .brand-mark{background:linear-gradient(135deg,#7852fa,#ff65af);border-radius:10px;transform:rotate(-8deg);box-shadow:0 6px 16px #7648ee55}
+.ua-site .desktop-nav a{font-weight:700;color:#3f366b}
+.ua-site .desktop-nav a:hover{color:#7650ea}
+.ua-site .btn,.ua-site button{border-radius:16px}
+.ua-site .btn-dark{background:#241360;color:#fff;box-shadow:0 8px 20px #2d14632a}
+.ua-site .btn-dark:hover{background:#6d40f1}
+.ua-site .hero{background:radial-gradient(ellipse at 20% 8%,#9b60ff 0%,transparent 42%),radial-gradient(ellipse at 95% 85%,#fa61ae 0%,transparent 39%),linear-gradient(128deg,#24116c 5%,#4c24bb 45%,#6c2dc0 100%);isolation:isolate}
+.ua-site .hero:after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(#ffffff38 1.4px,transparent 1.4px);background-size:26px 26px;mask-image:linear-gradient(90deg,transparent 20%,#000 100%);opacity:.4;z-index:-1}
+.ua-site .hero-grid{min-height:650px}
+.ua-site .hero h1{font-size:clamp(46px,5.6vw,80px);line-height:1.08;letter-spacing:-4px}
+.ua-site .hero h1 em{color:#efff87;font-family:Manrope,sans-serif;font-style:normal;white-space:normal}
+.ua-site .hero-copy>p{font-size:17px;line-height:1.75;color:#e4d9ff;max-width:530px}
+.ua-site .eyebrow-light{color:#e7d9ff}
+.ua-site .pulse-dot{background:#f2ff8c;box-shadow:0 0 0 6px #ddfa723d}
+.ua-site .btn-lime{background:#edff80;color:#2c166c;font-weight:800;box-shadow:0 10px 26px #1204412e}
+.ua-site .btn-lime:hover{background:#fbffba;transform:translateY(-2px)}
+.ua-site .btn-outline-light{border-color:#c9b3ff;color:#fff;backdrop-filter:blur(8px)}
+.ua-site .hero-proof{color:#e9defd}
+.ua-site .hero-art .mock-browser{border:7px solid #6b51d4;border-radius:23px;box-shadow:0 32px 80px #16085899,0 0 0 13px #ffffff10;transform:rotate(-4deg)}
+.ua-site .hero-art .mock-sphere{background:radial-gradient(circle at 33% 30%,#ffa6d1,#fd60ac 42%,#7b53fd 85%)}
+.ua-site .hero-art .mock-design{background:linear-gradient(135deg,#ffe6fa,#dfd0ff)}
+.ua-site .floating-label{border-radius:18px;box-shadow:0 12px 24px #16075450;background:#fff;color:#332269}
+.ua-site .art-glow{background:#fc81c5;filter:blur(85px)}
+.ua-site .hero-footer{color:#e1d3fb;letter-spacing:2px}
+.ua-site .intro-strip{background:linear-gradient(90deg,#efff88,#c8ffb2)}
+.ua-site .intro-strip-inner p{color:#2f2364}
+.ua-site .intro-asterisk{color:#7c43ff}
+.ua-site .section-index{color:#8952e8}
+.ua-site .eyebrow{color:#6755a6;font-weight:800}
+.ua-site .section-heading h2,.ua-site h2{letter-spacing:-2.2px}
+.ua-site .serif-accent{color:#8848ee}
+.ua-site .services{background:linear-gradient(180deg,#fff 0%,#fbf8ff 100%)}
+.ua-site .services-grid{gap:18px}
+.ua-site .service-card{background:#fff;border:1px solid #e8defd;border-radius:24px;box-shadow:0 6px 24px #482c980a}
+.ua-site .service-card:hover{box-shadow:0 18px 45px #4a2bab21;border-color:#ccbcff;transform:translateY(-6px)}
+.ua-site .service-card.card-tint{background:#f1eaff}
+.ua-site .service-card-feature{background:#302074;color:#fff}
+.ua-site .service-card-feature h3,.ua-site .service-card-feature p{color:#fff}
+.ua-site .service-card-feature a{color:#f2ff93}
+.ua-site .service-icon{color:#8456f4}
+.ua-site .service-tags span{background:#f3edff;color:#5a40af;border-radius:50px}
+.ua-site .work-section{background:#fff}
+.ua-site .filter-btn{border-radius:100px}
+.ua-site .filter-btn.active{background:#6d42ee;color:#fff}
+.ua-site .project-visual{border-radius:22px;overflow:hidden}
+.ua-site .preview-window{border-radius:16px}
+.ua-site .project-label{color:#8455e8}
+.ua-site .project-go,.ua-site .project-link{background:#f0eaff;color:#7644ea}
+.ua-site .pricing-section{background:linear-gradient(160deg,#f0e8ff,#faf7ff 50%,#fdf4fc)}
+.ua-site .pricing-grid{gap:18px;align-items:stretch}
+.ua-site .price-card{background:#fff;border:1px solid #e2d7fb;border-radius:26px;box-shadow:0 10px 30px #5f36a414}
+.ua-site .price-card.featured{border:2px solid #824ef9;transform:translateY(-6px);box-shadow:0 18px 42px #7145ee26}
+.ua-site .featured-label{top:-17px;right:20px;background:linear-gradient(90deg,#7250f0,#ea62b9);color:#fff;letter-spacing:1px;border-radius:100px;padding:9px 17px}
+.ua-site .price strong{color:#35216e;letter-spacing:-2px}
+.ua-site .btn-price{background:#f1eaff;color:#5230c0}
+.ua-site .price-card.featured .btn-price{background:#7450ef;color:#fff}
+.ua-site .process-section{background:#fff}
+.ua-site .step-number{color:#7c4cff}
+.ua-site .statement-section{background:linear-gradient(120deg,#281371,#743ec3 70%,#d15eab)}
+.ua-site .statement-section h2 em{color:#eeff84}
+.ua-site .faq-section{background:#fff}
+.ua-site .faq-items details{border-color:#e7defb}
+.ua-site .contact-section{background:linear-gradient(128deg,#4825b6 0%,#6c3bd3 55%,#c855bc 100%);color:#fff;position:relative;overflow:hidden}
+.ua-site .contact-section:before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:#ffffff19;top:-250px;left:-130px;pointer-events:none}
+.ua-site .contact-copy>p,.ua-site .contact-detail-label,.ua-site .contact-small{color:#e7d9ff}
+.ua-site .contact-copy h2 em{color:#edff7d}
+.ua-site .contact-form-card{background:#fff;color:#211a48;border-radius:28px;box-shadow:0 22px 60px #23116555}
+.ua-site .contact-form-card h3{color:#241957}
+.ua-site input,.ua-site select,.ua-site textarea{border-radius:13px;border-color:#e1d5fa;background:#fcfaff}
+.ua-site input:focus,.ua-site select:focus,.ua-site textarea:focus{outline:2px solid #9e77fc;outline-offset:1px}
+.ua-site .form-submit{background:#6f46eb;color:#fff;box-shadow:none}
+.ua-site .site-footer{background:#1c114d;color:#ded6f3}
+.ua-site .footer-bottom{border-color:#5d4685}
+.ua-site .ukraine-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #ffffff6e;padding:7px 12px;border-radius:100px;background:#ffffff20;font-size:12px;letter-spacing:.5px;font-weight:700}
+.ua-site .intro-strip-inner strong{color:#3d2b88}
+.ua-site .price-card ul li::before{color:#8c50f2}
+.ua-site .work-note{background:#f3edff;border-radius:12px;padding:13px 18px}
+.ua-site .pricing-footnote{line-height:1.7}
+@media(max-width:980px){.ua-site .hero-grid{min-height:auto;padding-top:62px}.ua-site .hero h1{letter-spacing:-3px}.ua-site .price-card.featured{transform:none}}
+@media(max-width:640px){.ua-site .hero h1{font-size:clamp(39px,10vw,62px);letter-spacing:-2.5px}.ua-site .hero-copy>p{font-size:15px}.ua-site .hero-grid{padding-top:42px}.ua-site .section-heading h2{letter-spacing:-1.5px}.ua-site .hero-footer{font-size:9px;gap:5px}.ua-site .price-card{border-radius:18px}.ua-site .contact-form-card{border-radius:20px}.ua-site .service-card{border-radius:18px}}
+@media(prefers-reduced-motion:reduce){.ua-site .service-card,.ua-site .btn-lime{transition:none;transform:none}}

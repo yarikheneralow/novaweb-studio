@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101022">
+<meta name="description" content="NovaWeb Studio — креативна вебстудія для українського бізнесу. Створіть концепт вашого сайту в інтерактивній лабораторії.">
+<title>NovaWeb Studio — Не просто сайт. Ваша цифрова сцена.</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#17142d;--muted:#625d75;--night:#111125;--acid:#dfff5b;--coral:#ff7b76;--violet:#a48bff;--paper:#f5f3ef;--line:rgba(24,20,50,.16)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;font:500 16px/1.6 Manrope,Arial,sans-serif;color:var(--ink);background:var(--paper)}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button{cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #876bff;outline-offset:4px}
+button:disabled{cursor:not-allowed;opacity:.6}
+.skip{position:absolute;top:-100px;left:20px;background:#fff;padding:12px;z-index:99}.skip:focus{top:10px}
+.wrap{width:min(1220px,calc(100% - 48px));margin:auto}
+.top{background:var(--night);color:#fff;position:sticky;top:0;z-index:30;border-bottom:1px solid #ffffff20}
+.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.logo{font:700 25px/1 "Space Grotesk",sans-serif;letter-spacing:-1.7px;white-space:nowrap}
+.logo b{color:var(--acid)}.logo i{color:var(--coral);font-style:normal}
+.navlinks{display:flex;align-items:center;gap:29px;color:#c4c3d0;font-size:13px;font-weight:700}
+.navlinks a:hover{color:var(--acid)}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;border:1px solid transparent;border-radius:14px;padding:14px 21px;font-weight:800;font-size:13px;transition:transform .18s,background .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn-acid{background:var(--acid);color:#161326}
+.btn-outline{color:#fff;border-color:#ffffff60;background:#ffffff0c}
+.btn-dark{background:var(--night);color:#fff}
+.menu{display:none;color:#fff;background:none;border:1px solid #ffffff50;border-radius:10px;padding:9px}
+.mobile-nav{display:none;padding:0 0 20px}.mobile-nav a{display:block;padding:12px 0;color:#eee}
+.announcement{display:flex;align-items:center;gap:12px;justify-content:center;padding:9px 20px;background:#dfff5b;color:#1b1729;font-size:11px;font-weight:800;letter-spacing:.08em;text-align:center}
+.announcement .dot{width:8px;height:8px;background:#17132a;border-radius:50%;box-shadow:0 0 0 5px #17132a17}
+.hero{background:var(--night);color:#fff;overflow:hidden;position:relative}
+.hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(#ffffff2c 1px,transparent 1px);background-size:26px 26px;opacity:.34;mask-image:linear-gradient(90deg,transparent,#000)}
+.hero-grid{min-height:695px;padding:77px 0 95px;display:grid;grid-template-columns:1.09fr .91fr;align-items:center;gap:36px;position:relative}
+.overline{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.overline:before{content:"";width:19px;height:2px;background:currentColor}
+.hero .overline{color:var(--acid)}
+.hero h1{font:700 clamp(59px,6.8vw,105px)/.99 "Space Grotesk",sans-serif;letter-spacing:-.078em;margin:28px 0 26px}
+.hero h1 .outline{-webkit-text-stroke:1px #dfff5b;color:transparent;display:block}
+.hero h1 .spark{color:var(--coral)}
+.hero-copy p{max-width:510px;color:#c3c1d0;font-size:16px;margin:0 0 30px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-stat{display:flex;align-items:center;gap:12px;margin-top:43px;color:#d9d7e4;font-size:12px}
+.live-pill{background:#ffffff16;border:1px solid #ffffff20;padding:9px 12px;border-radius:40px;font-weight:700}
+.live-pill:before{content:"";display:inline-block;width:7px;height:7px;background:var(--acid);border-radius:50%;margin-right:8px}
+.art{height:570px;position:relative;min-width:0;display:flex;align-items:center;justify-content:center;perspective:1000px}
+.art-orbit{position:absolute;width:520px;height:520px;border:1px dashed #a895ff6c;border-radius:50%;transform:rotate(-18deg)}
+.art-orbit:after{content:"";position:absolute;inset:45px;border:1px solid #ffffff1c;border-radius:50%}
+.art-frame{position:relative;width:min(470px,100%);height:380px;background:#f0edff;border:9px solid #ffffff;border-radius:27px;box-shadow:0 50px 90px #03010f9e;transform:rotate(-7deg);overflow:hidden;transition:transform .5s}
+.art-frame:hover{transform:rotate(-3deg) translateY(-8px)}
+.art-bar{height:36px;background:#f9f8ff;border-bottom:1px solid #e3d9ff;display:flex;align-items:center;gap:6px;padding:0 17px}
+.art-bar span{width:8px;height:8px;border-radius:50%;background:#ff786f}.art-bar span:nth-child(2){background:#ffc85d}.art-bar span:nth-child(3){background:#9edc80}
+.art-body{height:calc(100% - 36px);position:relative;background:linear-gradient(135deg,#e1d1ff,#ffd8ef 70%);padding:30px;overflow:hidden;color:#1c1450}
+.art-topline{display:flex;justify-content:space-between;font:800 13px "Space Grotesk";position:relative;z-index:3}
+.art-body h2{font:700 49px/.99 "Space Grotesk";letter-spacing:-3px;margin:40px 0 14px;position:relative;z-index:3}
+.art-body p{font-size:11px;max-width:190px;position:relative;z-index:3}
+.art-blob{position:absolute;right:-57px;bottom:-70px;width:280px;height:280px;border-radius:45% 55% 65% 35%;background:linear-gradient(45deg,#fa68a4,#8664ef);transform:rotate(35deg);box-shadow:inset 25px -18px 40px #280b563b}
+.art-orb{position:absolute;right:32px;top:65px;width:96px;height:96px;background:#deff76;border-radius:50%;filter:drop-shadow(0 10px 13px #311f6930)}
+.art-tag{position:absolute;padding:15px 19px;background:var(--acid);color:#15122a;border:2px solid #181426;border-radius:14px;box-shadow:7px 8px 0 #161329;font-size:13px;font-weight:900;letter-spacing:-.03em;z-index:5}
+.art-tag.one{top:60px;right:-4px;transform:rotate(9deg)}.art-tag.two{bottom:58px;left:-27px;background:var(--coral);transform:rotate(-9deg)}
+.ticker{background:var(--coral);color:#21172a;overflow:hidden;border-top:2px solid #161329;border-bottom:2px solid #161329}
+.ticker-line{width:max-content;display:flex;gap:38px;padding:16px 0;font:800 16px "Space Grotesk";letter-spacing:.03em;animation:ticker 28s linear infinite}
+.ticker-line span:before{content:"✳";margin-right:38px}
+@keyframes ticker{to{transform:translateX(-50%)}}
+.section{padding:105px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:42px}
+.section-head h2{font:700 clamp(39px,5vw,69px)/1.03 "Space Grotesk";letter-spacing:-.06em;margin:11px 0 0}
+.section-head h2 em{color:#7d54e4;font-style:normal}
+.section-head p{max-width:330px;color:var(--muted);margin:0}
+.lab{background:#faf9f7}
+.labbox{border:2px solid #19152f;border-radius:26px;overflow:hidden;box-shadow:12px 14px 0 #d4ff65;display:grid;grid-template-columns:385px minmax(0,1fr);background:#fff}
+.lab-controls{padding:31px;background:#fff;border-right:2px solid #19152f}
+.lab-label{font:800 11px "Space Grotesk";letter-spacing:.14em;color:#736c89;margin:0 0 18px}
+.field-title{font:700 26px "Space Grotesk";letter-spacing:-.04em;margin:0 0 21px}
+.option-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:27px}
+.choice{border:1.5px solid #d7d2e4;padding:14px 10px;text-align:left;background:#fff;border-radius:12px;font-weight:800;font-size:12px;transition:.15s}
+.choice span{display:block;font-size:24px;margin-bottom:4px}
+.choice[aria-pressed=true]{background:#e5ff8b;border-color:#17142d;box-shadow:3px 3px 0 #17142d}
+.choice:hover{border-color:#17142d}
+.lab-controls label{display:block;margin-bottom:9px;font-size:12px;font-weight:800}
+.lab-controls input[type=text]{width:100%;height:47px;background:#fbfafc;border:1px solid #d8d4df;border-radius:9px;padding:0 13px;margin-bottom:24px;color:#17142d}
+.swatches{display:flex;gap:12px;margin:8px 0 25px}
+.swatch{width:38px;height:38px;border-radius:50%;border:3px solid #fff;outline:1px solid #b8b1ce;position:relative}
+.swatch[aria-pressed=true]{outline:3px solid #1c1732;outline-offset:2px}
+.swatch[data-palette=candy]{background:linear-gradient(135deg,#fc8bc4,#9d7cfe)}
+.swatch[data-palette=lime]{background:linear-gradient(135deg,#b3fa68,#19192b)}
+.swatch[data-palette=ocean]{background:linear-gradient(135deg,#5bebf5,#255ac5)}
+.swatch[data-palette=peach]{background:linear-gradient(135deg,#ffb19f,#862e46)}
+.preview-side{padding:23px;background:#e9e6f4;min-width:0;display:flex;flex-direction:column}
+.preview-header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:17px;font-size:11px;font-weight:800;color:#57526d}
+.preview-header .right{display:flex;align-items:center;gap:9px}
+.preview-header .live{width:7px;height:7px;background:#37be8a;border-radius:50%;display:inline-block}
+.preview-window{--pv-bg:#ffd8ef;--pv-ink:#322359;--pv-accent:#ef5c9e;--pv-circle:#8b62ea;background:var(--pv-bg);color:var(--pv-ink);border:2px solid #17142d;border-radius:13px;overflow:hidden;min-height:430px;flex:1;box-shadow:6px 7px 0 #17142d26;position:relative;transition:background .25s,color .25s}
+.preview-nav{padding:21px 25px;display:flex;justify-content:space-between;gap:10px;align-items:center;position:relative;z-index:2}
+.preview-brand{font:800 16px "Space Grotesk";overflow-wrap:anywhere}
+.preview-toplinks{display:flex;gap:12px;font-size:10px;font-weight:800}
+.preview-stage{padding:28px 25px 35px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:4px;min-height:344px}
+.preview-copy{position:relative;z-index:2}
+.preview-kicker{font-size:10px;letter-spacing:.12em;font-weight:800;text-transform:uppercase}
+.preview-title{font:800 clamp(31px,3.5vw,55px)/.98 "Space Grotesk";letter-spacing:-.055em;margin:14px 0;overflow-wrap:anywhere}
+.preview-desc{max-width:225px;font-size:12px;line-height:1.6}
+.preview-button{display:inline-block;border:0;background:var(--pv-ink);color:#fff;border-radius:40px;padding:12px 16px;font-size:11px;font-weight:800;margin-top:17px}
+.preview-illustration{height:230px;position:relative;display:grid;place-items:center}
+.preview-illustration:before{content:"";width:190px;height:190px;border-radius:45% 55% 70% 30%;background:var(--pv-circle);transform:rotate(-25deg);box-shadow:17px 18px 0 #ffffff40;position:absolute}
+.preview-illustration:after{content:"";width:115px;height:115px;position:absolute;border:16px solid #ffffff7a;border-radius:50%;transform:translate(55px,-60px)}
+.preview-emoji{font-size:102px;z-index:2;filter:drop-shadow(12px 18px 8px #2222443b);transform:rotate(-12deg);transition:transform .3s}
+.preview-illustration:hover .preview-emoji{transform:rotate(7deg) scale(1.1)}
+.preview-foot{padding:16px 25px;background:#ffffff44;display:flex;justify-content:space-between;font-size:10px;font-weight:800}
+.preview-note{margin-top:19px;font-size:11px;color:#625d75;line-height:1.5}
+.toolrow{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.toolrow .btn{padding:12px 14px}
+.toast{position:fixed;right:22px;bottom:22px;z-index:90;max-width:370px;border-radius:15px;background:#191529;color:#fff;padding:14px 19px;box-shadow:0 15px 40px #0005;font-size:13px;transition:opacity .2s}
+.toast[hidden]{display:none}
+.portfolio{background:#191529;color:#fff}
+.portfolio .section-head p{color:#a9a5b8}
+.portfolio .section-head h2 em{color:var(--acid)}
+.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.project{display:block;background:#29233e;border:1px solid #ffffff25;border-radius:18px;overflow:hidden;transition:transform .2s,background .2s}
+.project:hover{transform:translateY(-7px);background:#3c3259}
+.project-img{height:230px;overflow:hidden;padding:19px;position:relative}
+.project:nth-child(1) .project-img{background:#bceadf}
+.project:nth-child(2) .project-img{background:#e6d1fb}
+.project:nth-child(3) .project-img{background:#f9dab6}
+.project-mock{height:190px;background:#fff;border-radius:10px;border:2px solid #201631;overflow:hidden;transform:rotate(-6deg);box-shadow:5px 10px 0 #20163133}
+.project:nth-child(2) .project-mock{transform:rotate(5deg)}.project:nth-child(3) .project-mock{transform:rotate(-3deg)}
+.project-mock-top{height:25px;padding:9px;background:#f5f2ed;display:flex;gap:4px}
+.project-mock-top span{width:7px;height:7px;background:#ff8e96;border-radius:50%}.project-mock-top span:nth-child(2){background:#eec761}.project-mock-top span:nth-child(3){background:#7bd4b3}
+.project-mock-hero{height:165px;padding:22px 20px}
+.project:nth-child(1) .project-mock-hero{background:#174d46;color:#e4ffdf}
+.project:nth-child(2) .project-mock-hero{background:#ebe4ff;color:#493b72}
+.project:nth-child(3) .project-mock-hero{background:#56341e;color:#ffe8cf}
+.project-mock-hero strong{display:block;font:800 28px/.95 "Space Grotesk";letter-spacing:-1px;max-width:180px}
+.project-mock-hero i{font-style:normal;font-size:43px;position:absolute;right:30px;bottom:11px}
+.project-details{padding:22px}
+.project-meta{color:#a999ff;font-size:10px;letter-spacing:.15em;font-weight:800}
+.project h3{font:700 24px "Space Grotesk";letter-spacing:-.03em;margin:7px 0 8px}
+.project p{font-size:12px;line-height:1.7;color:#c7c3d2;margin:0}
+.project-link{display:flex;align-items:center;justify-content:space-between;margin-top:16px;color:var(--acid);font-size:12px;font-weight:800}
+.pricing{background:#e7e2f6}
+.pricing-inner{display:grid;grid-template-columns:.8fr 1.2fr;gap:42px;align-items:start}
+.pricing-summary h2{font:700 clamp(42px,5vw,68px)/1.02 "Space Grotesk";letter-spacing:-.065em;margin:18px 0}
+.pricing-summary p{color:#655e7b}
+.price-label{font-weight:800;font-size:12px;margin:25px 0 12px}
+.plan-pills{display:flex;gap:7px;flex-wrap:wrap}
+.plan-pill{padding:12px 15px;font-size:12px;font-weight:800;border-radius:50px;border:1px solid #aaa0ce;background:#f9f8ff}
+.plan-pill[aria-pressed=true]{background:var(--night);color:#fff;border-color:var(--night)}
+.calculator{background:#fff;border:2px solid #17142d;border-radius:23px;padding:30px;box-shadow:9px 10px 0 #a991ff}
+.calculator h3{font:700 29px "Space Grotesk";letter-spacing:-.05em;margin:0 0 12px}
+.calculator .hint{font-size:12px;color:#6a637d;margin-bottom:20px}
+.addon{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:16px 0;border-bottom:1px solid #e5e0f0;cursor:pointer}
+.addon strong{font-size:12px;display:block}.addon small{font-size:10px;color:#807993}
+.addon input{width:18px;height:18px;accent-color:#7850ee;flex:0 0 auto}
+.addon-price{font-size:12px;color:#5f4b9d;font-weight:800}
+.bill{margin-top:22px;padding:23px;background:#f2eeff;border-radius:14px}
+.bill-row{display:flex;justify-content:space-between;align-items:end;gap:12px}
+.bill-row strong{font:700 43px "Space Grotesk";letter-spacing:-.07em}
+.bill-row small{font-size:12px}
+.bill-hint{margin-top:8px;color:#675d83;font-size:11px}
+.calculator .btn{margin-top:17px;width:100%}
+.disclaimer{font-size:11px;color:#736e84;line-height:1.7;margin:20px 0 0}
+.action{background:#dfff5b;padding:80px 0}
+.action-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:25px;align-items:center}
+.action h2{font:700 clamp(42px,6vw,80px)/1 "Space Grotesk";letter-spacing:-.07em;margin:10px 0 18px}
+.action p{max-width:590px}
+.action-right{background:#18142b;border-radius:24px;padding:27px;color:#fff;transform:rotate(3deg);box-shadow:9px 11px 0 #16132330}
+.action-right strong{font:700 24px "Space Grotesk";display:block;margin-bottom:14px}
+.action-right span{display:block;font-size:13px;color:#d0cddb}
+footer{background:#111125;color:#a8a3be;padding:38px 0}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:18px;font-size:12px}
+footer .logo{color:#fff}
+footer a:hover{color:var(--acid)}
+@media(max-width:1050px){.navlinks{gap:14px}.hero-grid{grid-template-columns:1fr .9fr}.art{height:480px}.art-orbit{width:400px;height:400px}.art-frame{height:340px}.art-body h2{font-size:40px}.art-tag{font-size:11px}.labbox{grid-template-columns:310px minmax(0,1fr)}.lab-controls{padding:22px}.preview-illustration:before{width:150px;height:150px}.preview-emoji{font-size:76px}}
+@media(max-width:790px){.navlinks,.nav>.btn{display:none}.menu{display:block}.mobile-nav.open{display:block}.hero-grid{grid-template-columns:1fr;gap:6px;padding:58px 0 70px}.hero h1{max-width:660px}.art{height:380px}.art-orbit{width:350px;height:350px}.art-frame{max-width:410px;height:335px}.art-tag.one{right:5%}.art-tag.two{left:5%;bottom:6px}.labbox{grid-template-columns:1fr}.lab-controls{border-right:0;border-bottom:2px solid #19152f}.option-grid{grid-template-columns:repeat(4,1fr)}.lab-controls{padding:25px}.section{padding:75px 0}.section-head{align-items:start;flex-direction:column;gap:10px}.projects{grid-template-columns:1fr 1fr}.pricing-inner,.action-grid{grid-template-columns:1fr}}
+@media(max-width:580px){.wrap{width:min(100% - 28px,1220px)}.nav{height:64px}.hero h1{font-size:clamp(54px,13vw,79px)}.hero-grid{padding-top:52px}.hero-copy p{font-size:14px}.art{height:340px}.art-frame{max-width:340px;height:280px}.art-body h2{font-size:34px;margin-top:32px}.art-orb{width:65px;height:65px}.art-tag{padding:9px 12px}.art-tag.one{top:22px;right:0}.art-tag.two{left:0;bottom:0}.art-orbit{width:300px;height:300px}.hero-stat{flex-wrap:wrap}.option-grid{grid-template-columns:1fr 1fr}.lab-controls{padding:22px}.preview-side{padding:15px}.preview-stage{grid-template-columns:1fr 105px;padding:18px 16px}.preview-toplinks{display:none}.preview-illustration{height:170px}.preview-illustration:before{width:108px;height:108px}.preview-illustration:after{width:64px;height:64px;border-width:9px;transform:translate(20px,-37px)}.preview-emoji{font-size:63px}.preview-title{font-size:35px}.preview-desc{font-size:10px}.preview-foot{padding:12px 16px}.section-head h2{font-size:43px}.projects{grid-template-columns:1fr}.pricing-summary h2{font-size:46px}.calculator{padding:22px}.action h2{font-size:49px}.foot{flex-direction:column;align-items:flex-start}.ticker-line{font-size:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">До основного вмісту</a>
+<header class="top">
+<div class="wrap nav">
+<a href="#home" class="logo" aria-label="NovaWeb Studio, головна">NOVA<b>WEB</b><i>.</i></a>
+<nav class="navlinks" aria-label="Головна навігація"><a href="#lab">Лабораторія</a><a href="#portfolio">Приклади</a><a href="#pricing">Тарифи</a></nav>
+<a href="#lab" class="btn btn-acid">Створити свій концепт <span aria-hidden="true">↗</span></a>
+<button class="menu" id="mobile-menu-toggle" aria-label="Відкрити меню" aria-expanded="false">☰</button>
+</div>
+<nav class="mobile-nav wrap" id="mobile-nav" aria-label="Мобільна навігація"><a href="#lab">Лабораторія</a><a href="#portfolio">Приклади</a><a href="#pricing">Тарифи</a></nav>
+</header>
+<main id="main">
+<div class="announcement"><span class="dot" aria-hidden="true"></span> СТВОРЕНО ДЛЯ УКРАЇНСЬКОГО БІЗНЕСУ · ДИЗАЙН + AI + РОЗРОБКА</div>
+<section class="hero" id="home" aria-labelledby="hero-title">
+<div class="wrap hero-grid">
+<div class="hero-copy">
+<div class="overline">НЕЗАЛЕЖНА WEB + AI СТУДІЯ</div>
+<h1 id="hero-title">НЕ ПРОСТО<br><span class="outline">САЙТ.</span> <span class="spark">✳</span><br>ЦЕ ВАУ.</h1>
+<p>Ваш сайт може бути звичайною сторінкою. А може стати незабутнім цифровим досвідом, який привертає увагу та приносить заявки.</p>
+<div class="hero-actions"><a href="#lab" class="btn btn-acid">Спробувати Site Lab ↗</a><a href="#portfolio" class="btn btn-outline">Дивитися приклади ↓</a></div>
+<div class="hero-stat"><span class="live-pill">SITE LAB · LIVE</span><span>Пограйте з дизайном просто на сайті — без реєстрації.</span></div>
+</div>
+<div class="art" aria-label="Ілюстрація креативного сайту">
+<div class="art-orbit" aria-hidden="true"></div>
+<div class="art-frame"><div class="art-bar"><span></span><span></span><span></span></div><div class="art-body"><div class="art-topline"><span>NEW REALITY.</span><span>☼ MENU</span></div><h2>Make<br>something<br>bold.</h2><p>Дизайн, який залишається в пам'яті.</p><div class="art-orb"></div><div class="art-blob"></div></div></div>
+<div class="art-tag one">✳ НЕ ЯК У ВСІХ</div><div class="art-tag two">↗ 100% ІДЕЇ</div>
+</div>
+</div>
+</section>
+<div class="ticker" aria-label="Наші напрямки"><div class="ticker-line"><span>ДИЗАЙН З ХАРАКТЕРОМ</span><span>ВЕБСАЙТИ</span><span>ІНТЕРНЕТ-МАГАЗИНИ</span><span>AI-АВТОМАТИЗАЦІЯ</span><span>ВЛАСНИЙ СТИЛЬ</span><span>ДИЗАЙН З ХАРАКТЕРОМ</span><span>ВЕБСАЙТИ</span><span>ІНТЕРНЕТ-МАГАЗИНИ</span><span>AI-АВТОМАТИЗАЦІЯ</span><span>ВЛАСНИЙ СТИЛЬ</span></div></div>
+<section class="section lab" id="lab">
+<div class="wrap">
+<div class="section-head"><div><div class="overline">01 / SITE LAB</div><h2>Не уявляйте.<br><em>Спробуйте.</em></h2></div><p>Мінілабораторія дизайну: змініть бізнес, назву та кольори й одразу побачте концепт майбутньої сторінки.</p></div>
+<div class="labbox">
+<div class="lab-controls">
+<p class="lab-label">LIVE DESIGN STUDIO // 01</p>
+<h3 class="field-title">Налаштуйте свій сайт.</h3>
+<p class="lab-label">ОБЕРІТЬ НІШУ</p>
+<div class="option-grid" id="sector-buttons">
+<button type="button" class="choice" data-sector="coffee" aria-pressed="true"><span>☕</span>Кав'ярня</button>
+<button type="button" class="choice" data-sector="beauty" aria-pressed="false"><span>✦</span>Краса</button>
+<button type="button" class="choice" data-sector="service" aria-pressed="false"><span>🔧</span>Послуги</button>
+<button type="button" class="choice" data-sector="auto" aria-pressed="false"><span>🚘</span>Авто</button>
+</div>
+<label for="brand-input">НАЗВА ВАШОЇ КОМПАНІЇ</label>
+<input type="text" id="brand-input" maxlength="30" value="Misto Coffee" autocomplete="organization" spellcheck="false">
+<p class="lab-label">КОЛЬОРОВА АТМОСФЕРА</p>
+<div class="swatches" id="swatch-buttons" aria-label="Колірна палітра">
+<button type="button" class="swatch" data-palette="candy" aria-label="Рожева і бузкова" aria-pressed="true"></button>
+<button type="button" class="swatch" data-palette="lime" aria-label="Лаймова і темна" aria-pressed="false"></button>
+<button type="button" class="swatch" data-palette="ocean" aria-label="Блакитна" aria-pressed="false"></button>
+<button type="button" class="swatch" data-palette="peach" aria-label="Персикова" aria-pressed="false"></button>
+</div>
+<div class="toolrow"><button type="button" class="btn btn-dark" id="download-concept">↓ Завантажити концепт</button></div>
+<p class="preview-note">Це інтерактивний макет. Кнопка збереже просту HTML-демонстрацію на ваш комп’ютер. Це не готовий комерційний сайт.</p>
+</div>
+<div class="preview-side">
+<div class="preview-header"><span>ПЕРЕГЛЯД В РЕАЛЬНОМУ ЧАСІ</span><span class="right"><span class="live"></span> ONLINE · DESKTOP</span></div>
+<div class="preview-window" id="preview-window" aria-live="polite">
+<div class="preview-nav"><strong class="preview-brand" id="pv-brand">Misto Coffee</strong><div class="preview-toplinks"><span>Про нас</span><span>Меню</span><span>Контакти ↗</span></div></div>
+<div class="preview-stage">
+<div class="preview-copy"><div class="preview-kicker" id="pv-kicker">Твоя нова улюблена кав'ярня</div><h3 class="preview-title" id="pv-title">Кава, що закохує.</h3><p class="preview-desc" id="pv-desc">Ароматні ранки, теплі зустрічі та ідеальне капучино — зовсім поруч.</p><span class="preview-button" id="pv-button">Переглянути меню ↗</span></div>
+<div class="preview-illustration"><span class="preview-emoji" id="pv-emoji" aria-hidden="true">☕</span></div>
+</div><div class="preview-foot"><span id="pv-footer">MISTO COFFEE · EST. 2026</span><span>MADE TO STAND OUT ✳</span></div>
+</div>
+<p class="preview-note">*Приклад візуального напряму, без реальної інтеграції замовлень чи онлайн-оплат.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="section portfolio" id="portfolio">
+<div class="wrap">
+<div class="section-head"><div><div class="overline" style="color:#dfff5b">02 / НАШІ КОНЦЕПТИ</div><h2>Різні бізнеси.<br><em>Яскраві рішення.</em></h2></div><p>Три вигадані демопроєкти, що показують стиль і можливості студії. Це не замовлення реальних клієнтів.</p></div>
+<div class="projects">
+<a href="demos/hvac.html" class="project"><div class="project-img"><div class="project-mock"><div class="project-mock-top"><span></span><span></span><span></span></div><div class="project-mock-hero"><strong>Northline<br>HVAC</strong><i>❄</i></div></div></div><div class="project-details"><div class="project-meta">DEMO · СЕРВІС</div><h3>Northline HVAC</h3><p>Сайт сервісної компанії з простим шляхом до заявки.</p><div class="project-link">Відкрити приклад <span aria-hidden="true">↗</span></div></div></a>
+<a href="demos/contractor.html" class="project"><div class="project-img"><div class="project-mock"><div class="project-mock-top"><span></span><span></span><span></span></div><div class="project-mock-hero"><strong>Form &<br>Field</strong><i>⌂</i></div></div></div><div class="project-details"><div class="project-meta">DEMO · БУДІВНИЦТВО</div><h3>Form & Field</h3><p>Портфоліо ремонтної компанії в архітектурному стилі.</p><div class="project-link">Відкрити приклад <span aria-hidden="true">↗</span></div></div></a>
+<a href="demos/cafe.html" class="project"><div class="project-img"><div class="project-mock"><div class="project-mock-top"><span></span><span></span><span></span></div><div class="project-mock-hero"><strong>Juniper<br>Coffee</strong><i>☕</i></div></div></div><div class="project-details"><div class="project-meta">DEMO · КАВ'ЯРНЯ</div><h3>Juniper Coffee</h3><p>Атмосферний сайт з характером для локальної кав'ярні.</p><div class="project-link">Відкрити приклад <span aria-hidden="true">↗</span></div></div></a>
+</div>
+</div>
+</section>
+<section class="section pricing" id="pricing">
+<div class="wrap pricing-inner">
+<div class="pricing-summary"><div class="overline">03 / ЦІНА ТА МОЖЛИВОСТІ</div><h2>Скільки<br>коштує <span style="color:#7750ed">вау?</span></h2><p>Зберіть орієнтовний пакет: виберіть тариф і додаткові функції. Розрахунок оновиться миттєво.</p><div class="price-label">ОБРАТИ ТАРИФ</div>
+<div class="plan-pills" id="plan-buttons"><button type="button" class="plan-pill" data-plan="free" aria-pressed="false">Start · 0 ₴</button><button type="button" class="plan-pill" data-plan="business" aria-pressed="true">Business · 2 000 ₴</button><button type="button" class="plan-pill" data-plan="ai" aria-pressed="false">Business + AI · 3 500 ₴</button></div>
+<p class="disclaimer">Безкоштовний Start — базова сторінка за шаблоном з обмеженнями, а не повністю індивідуальний сайт. Модель Business попередньо розрахована на договір від 12 місяців. Домени, платні сервіси та нестандартні роботи обговорюються окремо.</p>
+</div>
+<div class="calculator">
+<h3>Калькулятор проєкту ✳</h3><p class="hint">Виберіть, що потрібно вашому бізнесу.</p>
+<label class="addon"><span><strong>Онлайн-запис</strong><small>Проста форма бронювання без складної CRM</small></span><span class="addon-price">+350 ₴/міс</span><input type="checkbox" data-addon="booking" aria-label="Додати онлайн-запис"></label>
+<label class="addon"><span><strong>Друга мовна версія</strong><small>Додаткова локалізація сторінок</small></span><span class="addon-price">+400 ₴/міс</span><input type="checkbox" data-addon="language" aria-label="Додати другу мову"></label>
+<label class="addon"><span><strong>Каталог товарів</strong><small>Каталог без повноцінної системи оплати</small></span><span class="addon-price">+900 ₴/міс</span><input type="checkbox" data-addon="catalog" aria-label="Додати каталог"></label>
+<div class="bill"><div class="bill-row"><div><small>ОРІЄНТОВНО НА МІСЯЦЬ</small><br><strong id="price-total" aria-live="polite">2 000 ₴</strong></div><span style="font-size:22px">↗</span></div><div class="bill-hint" id="bill-hint">Business · без додаткових функцій</div></div>
+<button type="button" class="btn btn-dark" id="copy-brief">⧉ Скопіювати ТЗ і ціну</button>
+<p class="disclaimer">Це демонстраційний калькулятор, не офіційна комерційна пропозиція. Реальна ціна та обсяг робіт підтверджуються після оцінки проєкту. Заявки та онлайн-оплату поки не підключено.</p>
+</div>
+</div>
+</section>
+<section class="action" id="contact"><div class="wrap action-grid"><div><div class="overline">04 / ГОТОВІ ДО ІДЕЙ?</div><h2>Ваш бізнес.<br>Ваш стиль.<br>Наш код. ✳</h2><p>Уже зараз можна створити концепт і скопіювати технічне завдання. Повноцінну форму замовлення підключимо після налаштування робочої пошти студії.</p><a href="#lab" class="btn btn-dark">Повернутися до лабораторії ↑</a></div><div class="action-right"><strong>Краса — це тільки початок.</strong><span>Далі йдуть адаптивність, швидкість, заявки, інтеграції та AI. Все те, що робить сайт корисним для бізнесу.</span></div></div></section>
+</main>
+<footer><div class="wrap foot"><a class="logo" href="#home">NOVA<b>WEB</b><i>.</i></a><span>© <span id="year">2026</span> NovaWeb Studio · Україна · Демонстраційний концепт</span><a href="index.html">Попередня версія сайту ↗</a></div></footer>
+<div class="toast" id="toast" hidden role="status"></div>
+<script>
+(function(){
+'use strict';
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const sectors={
+ coffee:{brand:'Misto Coffee',kicker:"Твоя нова улюблена кав'ярня",title:'Кава, що закохує.',desc:'Ароматні ранки, теплі зустрічі та ідеальне капучино — зовсім поруч.',btn:'Переглянути меню ↗',emoji:'☕',foot:'MISTO COFFEE · EST. 2026'},
+ beauty:{brand:'Luna Beauty',kicker:'Простір краси та натхнення',title:'Бути собою — прекрасно.',desc:'Турбота, стиль і час, присвячений тільки тобі.',btn:'Записатися ↗',emoji:'✦',foot:'LUNA BEAUTY · EST. 2026'},
+ service:{brand:'Майстер Плюс',kicker:'Сервіс без зайвих турбот',title:'Вирішуємо. Швидко. Надійно.',desc:'Допоможемо з побутовими завданнями, щоб ви берегли свій час.',btn:'Замовити майстра ↗',emoji:'🔧',foot:'МАЙСТЕР ПЛЮС · EST. 2026'},
+ auto:{brand:'Drive Lab',kicker:'Автосервіс нового рівня',title:'Твій автомобіль. Наша пристрасть.',desc:'Діагностика, ремонт та увага до кожної деталі.',btn:'Записатися на сервіс ↗',emoji:'🚘',foot:'DRIVE LAB · EST. 2026'}
+};
+const palettes={
+ candy:{bg:'#ffd8ef',ink:'#322359',accent:'#ef5c9e',circle:'#8b62ea'},
+ lime:{bg:'#e1ff9e',ink:'#15251d',accent:'#4f8a46',circle:'#557a59'},
+ ocean:{bg:'#c6f6fb',ink:'#123a63',accent:'#3d76df',circle:'#48b8dc'},
+ peach:{bg:'#ffe1ce',ink:'#572d3a',accent:'#db8265',circle:'#e18e82'}
+};
+const plans={free:{label:'Start',value:0},business:{label:'Business',value:2000},ai:{label:'Business + AI',value:3500}};
+const addons={booking:{label:'Онлайн-запис',value:350},language:{label:'Друга мовна версія',value:400},catalog:{label:'Каталог товарів',value:900}};
+const state={sector:'coffee',palette:'candy',plan:'business'};
+$('#year').textContent=new Date().getFullYear();
+const menu=$('#mobile-menu-toggle'), mobile=$('#mobile-nav');
+menu.addEventListener('click',()=>{const open=mobile.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'✕':'☰';});
+$$('#mobile-nav a').forEach(a=>a.addEventListener('click',()=>{mobile.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰';}));
+function name(){return ($('#brand-input').value||'Ваш бізнес').trim().slice(0,30);}
+function renderPreview(){
+ const d=sectors[state.sector], p=palettes[state.palette],root=$('#preview-window');
+ root.style.setProperty('--pv-bg',p.bg);root.style.setProperty('--pv-ink',p.ink);root.style.setProperty('--pv-accent',p.accent);root.style.setProperty('--pv-circle',p.circle);
+ $('#pv-brand').textContent=name();$('#pv-kicker').textContent=d.kicker;$('#pv-title').textContent=d.title;$('#pv-desc').textContent=d.desc;$('#pv-button').textContent=d.btn;$('#pv-emoji').textContent=d.emoji;$('#pv-footer').textContent=name().toUpperCase()+' · КОНЦЕПТ';
+}
+$$('[data-sector]').forEach(btn=>btn.addEventListener('click',()=>{
+ state.sector=btn.dataset.sector;
+ $$('[data-sector]').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));
+ $('#brand-input').value=sectors[state.sector].brand;
+ renderPreview();
+}));
+$$('[data-palette]').forEach(btn=>btn.addEventListener('click',()=>{
+ state.palette=btn.dataset.palette;$$('[data-palette]').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));renderPreview();
+}));
+$('#brand-input').addEventListener('input',renderPreview);
+let toastTimer;function notify(msg){const t=$('#toast');t.textContent=msg;t.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.hidden=true,3300);}
+const format=n=>n.toLocaleString('uk-UA')+' ₴';
+function selectedAddons(){return Object.keys(addons).filter(k=>{const x=$('[data-addon="'+k+'"]');return !!x.checked&&!x.disabled;});}
+function total(){return plans[state.plan].value+selectedAddons().reduce((s,k)=>s+addons[k].value,0);}
+function renderPrice(){
+ const isFree=state.plan==='free';
+ $$('[data-addon]').forEach(x=>{x.disabled=isFree;if(isFree)x.checked=false;});
+ $('#price-total').textContent=format(total());
+ $('#bill-hint').textContent=plans[state.plan].label+(isFree?' · базова шаблонна сторінка':selectedAddons().length?' · '+selectedAddons().map(k=>addons[k].label).join(', '):' · без додаткових функцій');
+}
+$$('[data-plan]').forEach(btn=>btn.addEventListener('click',()=>{
+ state.plan=btn.dataset.plan;$$('[data-plan]').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));renderPrice();
+}));
+$$('[data-addon]').forEach(x=>x.addEventListener('change',renderPrice));
+function brief(){
+ return 'NOVAWEB STUDIO — ЧЕРНЕТКА ТЕХНІЧНОГО ЗАВДАННЯ\n'
+ +'Назва компанії: '+name()+'\n'
+ +'Сфера: '+({coffee:"Кав'ярня",beauty:'Краса',service:'Послуги',auto:'Автосервіс'})[state.sector]+'\n'
+ +'Палітра: '+({candy:'Рожева/бузкова',lime:'Лаймова',ocean:'Блакитна',peach:'Персикова'})[state.palette]+'\n'
+ +'Тариф: '+plans[state.plan].label+'\n'
+ +'Додатково: '+(selectedAddons().map(k=>addons[k].label).join(', ')||'немає')+'\n'
+ +'Орієнтир оплати: '+format(total())+' / місяць\n'
+ +'Увага: це деморозрахунок, не комерційна пропозиція. Деталі, терміни, домен і права на сайт погоджуються окремо.';
+}
+async function copy(t){
+ try{await navigator.clipboard.writeText(t);notify('✓ ТЗ скопійовано!');}
+ catch(e){const ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();notify(ok?'✓ ТЗ скопійовано!':'Не вдалося скопіювати. Спробуйте інший браузер.');}
+}
+$('#copy-brief').addEventListener('click',()=>copy(brief()));
+const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+$('#download-concept').addEventListener('click',()=>{
+ const d=sectors[state.sector],p=palettes[state.palette],title=escapeHtml(name());
+ const doc='<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+title+' — концепт</title><style>*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:'+p.bg+';color:'+p.ink+'}header{display:flex;justify-content:space-between;gap:20px;padding:25px 6%;font-weight:bold}main{min-height:75vh;display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center;padding:5% 7%}h1{font-size:clamp(42px,6vw,90px);letter-spacing:-.06em;line-height:1;margin:15px 0}p{font-size:19px;max-width:490px}.art{font-size:clamp(120px,20vw,250px);text-align:center;filter:drop-shadow(12px 20px 9px #0002)}span{font-size:12px;letter-spacing:.14em;font-weight:bold;text-transform:uppercase}a{background:'+p.ink+';color:#fff;display:inline-block;padding:17px 24px;border-radius:60px;margin-top:18px;text-decoration:none}footer{text-align:center;padding:20px} @media(max-width:650px){main{grid-template-columns:1fr}.art{font-size:100px}}</style></head><body><header><div>'+title+'</div><div>КОНЦЕПТ САЙТУ ✳</div></header><main><div><span>'+escapeHtml(d.kicker)+'</span><h1>'+escapeHtml(d.title)+'</h1><p>'+escapeHtml(d.desc)+'</p><a href="#">'+escapeHtml(d.btn)+'</a></div><div class="art" aria-hidden="true">'+escapeHtml(d.emoji)+'</div></main><footer>Демонстраційний концепт від NovaWeb Studio. Форма та замовлення не підключені.</footer></body></html>';
+ const blob=new Blob([doc],{type:'text/html;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='novaweb-concept.html';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);notify('✓ HTML-концепт завантажено!');
+});
+renderPreview();renderPrice();
+})();
+</script>
+</body></html>

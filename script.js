@@ -9,14 +9,14 @@
 
   function closeMobileMenu() {
     mobileToggle?.setAttribute('aria-expanded', 'false');
-    mobileToggle?.setAttribute('aria-label', 'Open navigation');
+    mobileToggle?.setAttribute('aria-label', 'Відкрити меню');
     if (mobileMenu) mobileMenu.hidden = true;
   }
 
   mobileToggle?.addEventListener('click', () => {
     const opening = mobileToggle.getAttribute('aria-expanded') !== 'true';
     mobileToggle.setAttribute('aria-expanded', String(opening));
-    mobileToggle.setAttribute('aria-label', opening ? 'Close navigation' : 'Open navigation');
+    mobileToggle.setAttribute('aria-label', opening ? 'Закрити меню' : 'Open navigation');
     if (mobileMenu) mobileMenu.hidden = !opening;
   });
   mobileMenu?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobileMenu));
@@ -57,18 +57,18 @@
     if (!form.reportValidity()) return;
     if (!emailReady) {
       if (status) {
-        status.textContent = 'The contact form is not connected yet. The studio owner must add an email to studio-config.js before accepting inquiries.';
+        status.textContent = 'Форму ще не підключено. Власнику студії потрібно вказати email у studio-config.js.';
         status.className = 'form-status warning';
       }
       return;
     }
     const data = new FormData(form);
     const value = field => String(data.get(field) || '').trim();
-    const subject = `Project inquiry — ${value('service')}`;
-    const body = `Hi ${config.studioName || 'NovaWeb Studio'},\n\nI would like to discuss a project.\n\nName: ${value('name')}\nMy email: ${value('email')}\nService: ${value('service')}\n\nProject details:\n${value('details')}\n\nBest regards,\n${value('name')}`;
+    const subject = `Заявка на сайт — ${value('service')}`;
+    const body = `Вітаю, ${config.studioName || 'NovaWeb Studio'}!\n\nХочу обговорити проєкт.\n\nІм’я: ${value('name')}\nEmail: ${value('email')}\nПослуга: ${value('service')}\n\nДеталі проєкту:\n${value('details')}\n\nЗ повагою,\n${value('name')}`;
     const href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     if (status) {
-      status.textContent = 'Your email app should open now. Please send the drafted message there to finish your inquiry.';
+      status.textContent = 'Відкрийте поштовий застосунок та надішліть підготовлений лист для завершення звернення.';
       status.className = 'form-status success';
     }
     window.location.href = href;
